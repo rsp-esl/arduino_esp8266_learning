@@ -12,7 +12,8 @@
 
 // Note:
 // 1) We use the HC-SR04+ ultrasonic module that can operate at Vcc=3.3V.
-// 2) The HC-SR04 ultrasonic module works only with Vcc=5V.
+// 2) The HC-SR04 ultrasonic module works only with Vcc=5V,
+//    whereas the HC-SR04+ module works with both 3.3V and 5V.
 
 const uint32_t timeout_usec = 40000;     // timeout in microseconds
 const uint32_t sound_speed  = 34300;     // in centimeters/second
