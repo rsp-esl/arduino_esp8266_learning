@@ -13,7 +13,7 @@
 
 #include <ESP8266WiFi.h>
 
-#define VALUE_MAX 255      // max. value (range: 0..VALUE_MAX) for PWM
+#define VALUE_MAX 255      // max. value (range: 0..VALUE_MAX) for PWM period
 
 // constants
 const int QA_PIN = 14;     // D5 = GPIO14 (QA or CLK pin of the rotary encoder switch)
