@@ -6,6 +6,7 @@ Enjoy learning with Arduino and ESP8266 :)
 ESP8266 Interfacing
 - BH1750 I2C Light Sensor Module
 - DHT11 / DHT22 Temperature & Humidity Sensor Module
+- DS18B20 OneWire Temperature Sensor Module
 - PCF8574(A) Adapter (I2C) + 16x2 LCD Module
 - PCF8574(A) 8-bit I/O expander (I2C) + 8-bit LED Array
 - PCF8574(A) 8-bit I/O expander (I2C) + 4x4 Membrane Keypad
