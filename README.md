@@ -9,7 +9,7 @@ ESP8266 Interfacing
 - PCF8574(A) Adapter (I2C) + 16x2 LCD Module
 - PCF8574(A) 8-bit I/O expander (I2C) + 8-bit LED Array
 - PCF8574(A) 8-bit I/O expander (I2C) + 4x4 Membrane Keypad
-- RGB LED modules (common-anode or command-cathode)
+- RGB LED modules (common-anode or common-cathode)
 - Rotary Encoder Switch
 - PWM-based LED dimming
 - Ultrasonic HC-SR04 Plus Mudule
