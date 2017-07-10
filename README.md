@@ -14,6 +14,7 @@ ESP8266 Interfacing
 - Rotary Encoder Switch
 - PWM-based LED dimming
 - Ultrasonic HC-SR04 Plus Mudule
+- TM1638-based Controller for 7-Segment Displays and LEDs 
 
 Note:
 - To setup Arduino IDE for ESP8266 programming, please follow the instructions<br>
