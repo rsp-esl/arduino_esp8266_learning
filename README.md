@@ -8,14 +8,14 @@ ESP8266 Interfacing
 - DHT11 / DHT22 Temperature & Humidity Sensor Module
 - DS18B20 OneWire Temperature Sensor Module
 - PCF8574(A) Adapter (I2C) + 16x2 LCD Module
-- PCF8574(A) 8-bit I/O expander (I2C) + 8-bit LED Array
-- PCF8574(A) 8-bit I/O expander (I2C) + 4x4 Membrane Keypad
-- RGB LED modules (common-anode or common-cathode)
+- PCF8574(A) 8-bit I/O Expander (I2C) + 8-bit LED Array
+- PCF8574(A) 8-bit I/O Expander (I2C) + 4x4 Membrane Keypad
+- RGB LED Modules (Common-Anode or Common-Cathode)
 - Rotary Encoder Switch
-- PWM-based LED dimming
-- Ultrasonic HC-SR04 Plus Mudule
-- TM1638-based Controller for 7-Segment Displays and LEDs
-- WS2812 RGB LED module or strip
+- PWM-based LED Dimming
+- Ultrasonic HC-SR04+ (Plus) Module
+- TM1638-based Controller for 7-Segment Displays, LEDs, Push Buttons (Keypad)
+- WS2812 RGB LED Module or Strip
 
 Note:
 - To setup Arduino IDE for ESP8266 programming, please follow the instructions<br>
