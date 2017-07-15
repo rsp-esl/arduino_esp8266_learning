@@ -22,6 +22,7 @@ const char *MONTH_NAMES[] = {
 uint32_t ts;
 
 void connectWiFi() {
+  WiFi.mode( WIFI_STA );
   WiFi.begin(  WIFI_SSID, WIFI_PASS );
   Serial.print( "Connecting WiFi " );
   while ( WiFi.status() != WL_CONNECTED ) {
@@ -80,3 +81,5 @@ void loop() {
   delay(5);
 }
 //////////////////////////////////////////////////////////////////////////
+
+
