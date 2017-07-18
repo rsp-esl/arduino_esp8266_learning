@@ -1,6 +1,6 @@
 //////////////////////////////////////////////////////////////////////////
 // Author: RSP @ Embedded Systems Lab (ESL), KMUTNB, Bangkok / Thailand
-// Date: 2017-07-01
+// Date: 2017-07-18
 // Arduino IDE: v1.8.2 + esp8266 v2.3.0
 // Boards with ESP-12E
 //////////////////////////////////////////////////////////////////////////
@@ -9,7 +9,8 @@
 // see: https://www.wemos.cc/product/d1-mini.html
 // schematic: https://www.wemos.cc/sites/default/files/2016-09/mini_new_V2.pdf
 
-#define LED_PIN   2     // GPIO-2 or D9 pin (built-in LED on ESP-12E module)
+//#define LED_PIN   2     // GPIO-2 or D9 pin (built-in LED on ESP-12E module)
+#define LED_PIN LED_BUILTIN 
 
 // global variable
 int state = 0;
