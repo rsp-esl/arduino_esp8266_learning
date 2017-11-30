@@ -45,17 +45,11 @@ void loop() {
   while ( softSerial.available() > 0 ) { // read from soft serial and send to usb serial
     ch = softSerial.read(); 
     Serial.write( ch ) ;
-    if ( ch == CHAR_LF ) {
-        break;
-    }
   }
   
   while ( Serial.available() > 0 ) { // read from usb serial and send to soft serial
     ch = Serial.read(); 
     softSerial.write( ch ) ;
-    if ( ch == CHAR_LF ) {
-        break;
-    }
   }
 }
 ////////////////////////////////////////////////////////////////////////////////////////
