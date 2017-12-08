@@ -69,6 +69,7 @@ void setup() {
   pinMode( LED_PIN, OUTPUT );
   digitalWrite( LED_PIN, LOW );
   wifi_off();
+  delay(100);
   
   Serial.begin( 115200 );
   for ( int i=0; i < 10; i++ ) {
@@ -77,13 +78,12 @@ void setup() {
   }
   Serial.flush();
 
-  WiFi.disconnect();
-  WiFi.mode( WIFI_OFF );
-
   Wire.begin( SDA_PIN, SCL_PIN );
   Wire.setClock(100000);
   i2c_scan();
 
+  delay(1000);
+  
   if ( !bme.begin( DEV_ADDR, SDA_PIN, SCL_PIN, 400000 ) ) {
     Serial.println( F("Could not find a valid BME280 sensor, check wiring!") );
     Serial.printf( "Chip ID : 0x%02x\n", bme.readChipID() );
