@@ -24,13 +24,18 @@ bool BME280::begin( uint8_t addr, int32_t sda_pin, int32_t scl_pin, int32_t clk_
   Wire.begin( (int) _sda_pin,(int) _scl_pin );  // default: GPIO4=D2 for SDA, GPIO5=D1 for SCL
   Wire.setClock( _speed );   // set I2C speed 
 
-  if ( read8(BME280_REGISTER_CHIPID) != 0x60 )
+  if ( readChipID() != 0x60 ) {
     return false;
+  }
 
   readCoefficients();
   write8( BME280_REGISTER_CONTROLHUMID, 0x05 ); // 16x oversampling 
   write8( BME280_REGISTER_CONTROL, 0xB7 );      // 16x ovesampling, normal mode
   return true;
+}
+
+uint8_t BME280::readChipID(void) {
+  return read8(BME280_REGISTER_CHIPID);
 }
 
 //  Writes an 8-bit value over I2C

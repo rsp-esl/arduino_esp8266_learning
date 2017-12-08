@@ -88,10 +88,11 @@ class BME280 {
   public:
     BME280(void);
     bool begin( uint8_t addr=BME280_ADDRESS, 
-                int32_t sda_pin=4, 
-                int32_t scl_pin=5, 
+                int32_t sda_pin=4, // D1
+                int32_t scl_pin=5, // D2
                 int32_t clk_speed=100000 );
-
+    
+    uint8_t   readChipID(void);
     float     readTemperature(void);
     float     readPressure(void);
     float     readHumidity(void);

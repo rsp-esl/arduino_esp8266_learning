@@ -9,10 +9,11 @@
 #include <Wire.h>
 #include "BME280.h"
 
-#define LED_PIN        (D4)    // D4 pin (GPIO-2)
+#define LED_PIN        (D4)
 
-#define SDA_PIN        (D2)    // D2 pin (GPIO-4)
-#define SCL_PIN        (D1)    // D1 pin (GPIO-5)
+#define SCL_PIN        (D1)
+#define SDA_PIN        (D2)  
+
 
 #define DEV_ADDR       (0x76)
 
@@ -25,9 +26,50 @@ BME280 bme;
 char sbuf[64];
 uint32_t ts;
 
+void wifi_off() {
+  WiFi.mode( WIFI_STA );
+  WiFi.disconnect(); 
+  WiFi.mode( WIFI_OFF );
+  WiFi.forceSleepBegin();
+  delay(1);
+}
+
+uint8_t i2c_scan( ) {
+  uint8_t error;
+  uint8_t start_addr = 0x01;
+  uint8_t end_addr = 0x7f;
+  int founds;
+  
+  founds = 0;
+  for ( uint8_t addr = start_addr; addr < end_addr; addr++ ) {
+    // The i2c_scanner uses the return value of
+    // the Write.endTransmisstion to see if
+    // a device did acknowledge to the address.
+    Wire.beginTransmission(addr);
+    error = Wire.endTransmission();
+
+    if ( error == 0 ) {
+      sprintf( sbuf, "Found a device at 0x%02X", addr );
+      Serial.println( sbuf );
+      founds++;
+    }
+    yield();
+  }
+  
+  if ( founds == 0 ) {
+    Serial.println( F("No I2C devices found") );
+  } 
+  else {
+    Serial.printf( "Scan done, %d device(s) found\r\n", founds );
+  }
+  return founds;
+}
+
 void setup() {
   pinMode( LED_PIN, OUTPUT );
   digitalWrite( LED_PIN, LOW );
+  wifi_off();
+  
   Serial.begin( 115200 );
   for ( int i=0; i < 10; i++ ) {
     delay(100);
@@ -38,11 +80,20 @@ void setup() {
   WiFi.disconnect();
   WiFi.mode( WIFI_OFF );
 
-  if (!bme.begin( DEV_ADDR, SDA_PIN, SCL_PIN, 400000 ) ) {
-    Serial.println( "Could not find a valid BME280 sensor, check wiring!" );
-    while (1) { delay(5); }
+  Wire.begin( SDA_PIN, SCL_PIN );
+  Wire.setClock(100000);
+  i2c_scan();
+
+  if ( !bme.begin( DEV_ADDR, SDA_PIN, SCL_PIN, 400000 ) ) {
+    Serial.println( F("Could not find a valid BME280 sensor, check wiring!") );
+    Serial.printf( "Chip ID : 0x%02x\n", bme.readChipID() );
+    while (1) {
+        delay(1000);
+    }
+
   } else {
     Serial.println( F("BME280 device detected.") );
+    Serial.printf( "Chip ID : 0x%02x\n", bme.readChipID() );
   }
   Serial.println( F("BME280 sensor reading...") );
   ts = millis();
