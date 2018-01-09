@@ -3,6 +3,8 @@
 #define __DIGITAL_OUT_H
 ///////////////////////////////////////////////////////////////////////
 
+#include "Arduino.h"
+
 class DigitalOut {
 public:
   DigitalOut( int pin, int value=0 ) : _pin(pin), _value(value) {
