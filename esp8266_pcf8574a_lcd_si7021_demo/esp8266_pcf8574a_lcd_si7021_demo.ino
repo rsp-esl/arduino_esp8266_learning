@@ -91,7 +91,6 @@ void loop() {
          lcd.print( sbuf );
          sprintf( sbuf, "Humid: %d.%d %%RH", humid/10, humid%10 );
          Serial.println( sbuf );
-         Serial.print( sbuf );
          lcd.setCursor( 0 /*col*/, 1 /*row*/ ); 
          lcd.print( sbuf );
      } else {
